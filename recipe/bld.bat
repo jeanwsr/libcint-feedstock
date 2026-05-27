@@ -1,8 +1,15 @@
-set CMAKE_GENERATOR=
-set CMAKE_GENERATOR_PLATFORM=
-set CMAKE_GENERATOR_TOOLSET=
+@ECHO ON
 
-cmake -G "Ninja" %CMAKE_ARGS% -DCMAKE_C_COMPILER=%CC% -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -S . -B build
+cmake %CMAKE_ARGS% ^
+  -G "Ninja" ^
+  -S %SRC_DIR% ^
+  -B build ^
+  -DCMAKE_BUILD_TYPE=Release ^
+  -DCMAKE_C_FLAGS="%CFLAGS%" ^
+  -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
+  -DCMAKE_INSTALL_LIBDIR=lib ^
+  -DBUILD_SHARED_LIBS=ON ^
 
-cmake --build build --parallel %CPU_COUNT%
+
+cmake --build build --parallel %CPU_COUNT% --verbose
 cmake --install build

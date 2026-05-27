@@ -4,11 +4,12 @@ cmake ${CMAKE_ARGS} -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=ON \
     -S. \
     -Bbuild \
+    -G Ninja \
     -DWITH_F12=ON \
     -DWITH_RANGE_COULOMB=ON \
     -DWITH_COULOMB_ERF=ON
     
 
-cd build
+cmake --build build -j ${CPU_COUNT}
+cmake --install build
 
-make install
