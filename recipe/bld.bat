@@ -9,6 +9,9 @@ cmake %CMAKE_ARGS% ^
   -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
   -DCMAKE_INSTALL_LIBDIR=lib ^
   -DBUILD_SHARED_LIBS=ON ^
+  -DWITH_F12=ON ^
+  -DWITH_RANGE_COULOMB=ON ^
+  -DWITH_COULOMB_ERF=ON
 
 
 cmake --build build --parallel %CPU_COUNT% --verbose
